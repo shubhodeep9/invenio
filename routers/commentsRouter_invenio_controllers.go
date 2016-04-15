@@ -13,6 +13,13 @@ func init() {
 			[]string{"get"},
 			nil})
 
+	beego.GlobalControllerRouter["invenio/controllers:LoginController"] = append(beego.GlobalControllerRouter["invenio/controllers:LoginController"],
+		beego.ControllerComments{
+			"Post",
+			`/`,
+			[]string{"post"},
+			nil})
+
 	beego.GlobalControllerRouter["invenio/controllers:ObjectController"] = append(beego.GlobalControllerRouter["invenio/controllers:ObjectController"],
 		beego.ControllerComments{
 			"Post",
