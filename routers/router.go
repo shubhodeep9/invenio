@@ -1,4 +1,4 @@
-// @APIVersion 1.0.0
+// @APIVersion 0.0.1
 // @Title beego Test API
 // @Description beego has a very cool tools to autogenerate documents for your API
 // @Contact astaxie@gmail.com
