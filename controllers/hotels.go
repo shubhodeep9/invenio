@@ -17,7 +17,12 @@ type HotelController struct {
 // @Success 200
 // @router / [post]
 func (o *HotelController) Post() {
-	req := httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+Bangalore&key=AIzaSyAmDb9Gv7rY8dWvEUbwyU0y3hQTz2eoatU")
+	var req *httplib.BeegoHTTPRequest
+	if o.Input().Get("i") == "1" {
+		req = httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=tourist+places+in+Bangalore&key=AIzaSyAmDb9Gv7rY8dWvEUbwyU0y3hQTz2eoatU")
+	} else {
+		req = httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+Bangalore&key=AIzaSyAmDb9Gv7rY8dWvEUbwyU0y3hQTz2eoatU")
+	}
 	var resp models.Hotels
 	if req.ToJSON(&resp) == nil {
 		for i := range resp.Results {
