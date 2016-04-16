@@ -55,6 +55,13 @@ func init() {
 			[]string{"delete"},
 			nil})
 
+	beego.GlobalControllerRouter["invenio/controllers:ShowController"] = append(beego.GlobalControllerRouter["invenio/controllers:ShowController"],
+		beego.ControllerComments{
+			"Post",
+			`/`,
+			[]string{"post"},
+			nil})
+
 	beego.GlobalControllerRouter["invenio/controllers:SignUpController"] = append(beego.GlobalControllerRouter["invenio/controllers:SignUpController"],
 		beego.ControllerComments{
 			"Post",

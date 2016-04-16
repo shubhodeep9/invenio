@@ -30,6 +30,11 @@ func init() {
 				&controllers.LoginController{},
 			),
 		),
+		beego.NSNamespace("showrev",
+			beego.NSInclude(
+				&controllers.ShowController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
