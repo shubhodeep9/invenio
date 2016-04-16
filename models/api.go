@@ -35,3 +35,14 @@ type GeoCode struct {
 type GeoResStruct struct {
 	Formatted string `json:"formatted_address"`
 }
+
+//TextSearch
+
+type Hotels struct {
+	Results []HotelResStruct
+}
+
+type HotelResStruct struct {
+	Name   string
+	Rating float64
+}

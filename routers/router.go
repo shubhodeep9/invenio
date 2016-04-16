@@ -35,6 +35,11 @@ func init() {
 				&controllers.ShowController{},
 			),
 		),
+		beego.NSNamespace("hotels",
+			beego.NSInclude(
+				&controllers.HotelController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
