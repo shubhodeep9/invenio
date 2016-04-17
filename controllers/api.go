@@ -6,11 +6,44 @@ import (
 	"github.com/astaxie/beego/httplib"
 	"github.com/astaxie/beego/orm"
 	"invenio/models"
+	"math/rand"
+	"strconv"
 )
 
 // Operations about api
 type ApiController struct {
 	beego.Controller
+}
+
+// @Title Api
+// @Description sentimental analysis
+// @Param	objectId		path 	string	true		"the objectid you want to get"
+// @Success 200
+// @router / [get]
+func (o *ApiController) Get() {
+	img := "bla"
+	location := "bla"
+	req := httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=tourist+places+in+Hyderabad&key=AIzaSyCMipFvgdKvfJ0AGMB6gMfksOHW6kLtiq4")
+	var resp models.Hotels
+	req.ToJSON(&resp)
+	or := orm.NewOrm()
+	for i := range resp.Results {
+		age := rand.Intn(4)
+		smile := rand.Intn(5)
+		couple := rand.Intn(1)
+		lat := strconv.FormatFloat(resp.Results[i].Geometry.Location.Lat, 'f', 6, 64)
+		lng := strconv.FormatFloat(resp.Results[i].Geometry.Location.Lng, 'f', 6, 64)
+		dbins := models.Upload{
+			ImgUrl:      img,
+			AgeCategory: age,
+			Latitude:    lat,
+			Longitude:   lng,
+			Smile:       smile,
+			Couple:      couple,
+			Location:    location,
+		}
+		or.Insert(&dbins)
+	}
 }
 
 // @Title Api
@@ -61,7 +94,7 @@ func (o *ApiController) Post() {
 				AgeCategory: ageCat,
 				Latitude:    lat,
 				Longitude:   long,
-				Smile:       int(smile),
+				Smile:       int(smile) / 20,
 				Couple:      couple,
 				Location:    location,
 			}

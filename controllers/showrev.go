@@ -11,6 +11,10 @@ type ShowController struct {
 	beego.Controller
 }
 
+type ShowRevStruct struct {
+	Results []models.Upload `json:"results"`
+}
+
 // @Title Show Reviews
 // @Description Signup API
 // @Param	objectId		path 	string	true		"the objectid you want to get"
@@ -20,7 +24,9 @@ func (o *ShowController) Post() {
 	or := orm.NewOrm()
 	var uploads []models.Upload
 	if _, err := or.QueryTable("upload").All(&uploads); err == nil {
-		o.Data["json"] = uploads
+		o.Data["json"] = ShowRevStruct{
+			Results: uploads,
+		}
 	}
 	o.ServeJSON()
 }

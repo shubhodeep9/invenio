@@ -8,6 +8,13 @@ func init() {
 
 	beego.GlobalControllerRouter["invenio/controllers:ApiController"] = append(beego.GlobalControllerRouter["invenio/controllers:ApiController"],
 		beego.ControllerComments{
+			"Get",
+			`/`,
+			[]string{"get"},
+			nil})
+
+	beego.GlobalControllerRouter["invenio/controllers:ApiController"] = append(beego.GlobalControllerRouter["invenio/controllers:ApiController"],
+		beego.ControllerComments{
 			"Post",
 			`/`,
 			[]string{"post"},

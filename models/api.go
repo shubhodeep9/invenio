@@ -39,22 +39,22 @@ type GeoResStruct struct {
 //TextSearch
 
 type Hotels struct {
-	Results []HotelResStruct
+	Results []HotelResStruct `json:"results"`
 }
 
 type HotelResStruct struct {
-	Name     string
-	Rating   float64
-	Geometry GeoStruct
+	Geometry GeoStruct `json:"geometry"`
+	Name     string    `json:"name"`
+	Rating   float64   `json:"rating"`
 }
 
 type GeoStruct struct {
-	Location LocStruct
+	Location LocStruct `json:"location"`
 }
 
 type LocStruct struct {
-	Lat float64
-	Lng float64
+	Lat float64 `json:"lat"`
+	Lng float64 `json:"lng"`
 }
 
 //JSON for getting list of places
@@ -68,4 +68,22 @@ type RouteStruct struct {
 
 type LegStruct struct {
 	EndAddress string `json:"end_address"`
+}
+
+//restaurant
+type RestRespStruct struct {
+	BreakFast []RestResponse `json:"breakfast"`
+	Lunch     []RestResponse `json:"lunch"`
+	Dinner    []RestResponse `json:"dinner"`
+	Itenary   []IteStruct    `json:"itenary"`
+}
+
+type RestResponse struct {
+	Name   string  `json:"name"`
+	Rating float64 `json:"rating"`
+}
+
+type IteStruct struct {
+	Name string `json:"name"`
+	Type string `json:"type"`
 }

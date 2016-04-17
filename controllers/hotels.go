@@ -19,9 +19,9 @@ type HotelController struct {
 func (o *HotelController) Post() {
 	var req *httplib.BeegoHTTPRequest
 	if o.Input().Get("i") == "1" {
-		req = httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=tourist+places+in+Bangalore&key=AIzaSyAmDb9Gv7rY8dWvEUbwyU0y3hQTz2eoatU")
+		req = httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=tourist+places+in+Bangalore&key=AIzaSyCMipFvgdKvfJ0AGMB6gMfksOHW6kLtiq4")
 	} else {
-		req = httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+Bangalore&key=AIzaSyAmDb9Gv7rY8dWvEUbwyU0y3hQTz2eoatU")
+		req = httplib.Get("https://maps.googleapis.com/maps/api/place/textsearch/json?query=hotels+in+Bangalore&key=AIzaSyCMipFvgdKvfJ0AGMB6gMfksOHW6kLtiq4")
 	}
 	var resp models.Hotels
 	if req.ToJSON(&resp) == nil {
