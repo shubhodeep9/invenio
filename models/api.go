@@ -43,6 +43,29 @@ type Hotels struct {
 }
 
 type HotelResStruct struct {
-	Name   string
-	Rating float64
+	Name     string
+	Rating   float64
+	Geometry GeoStruct
+}
+
+type GeoStruct struct {
+	Location LocStruct
+}
+
+type LocStruct struct {
+	Lat float64
+	Lng float64
+}
+
+//JSON for getting list of places
+type Places struct {
+	Routes []RouteStruct `json:"routes"`
+}
+
+type RouteStruct struct {
+	Legs []LegStruct `json:"legs"`
+}
+
+type LegStruct struct {
+	EndAddress string `json:"end_address"`
 }

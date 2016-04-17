@@ -40,6 +40,11 @@ func init() {
 				&controllers.HotelController{},
 			),
 		),
+		beego.NSNamespace("restaurants",
+			beego.NSInclude(
+				&controllers.RestController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
